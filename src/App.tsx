@@ -1,12 +1,14 @@
 import './App.css';
-import React from "react";
 import Game from "./Game";
+import * as React from "react";
+import { ReactElement } from "react";
 
-function App() {
+
+const App = (): ReactElement => {
     document.title = "Tic Tac Toe";
 
     return (
-        <Game />
+        <Game/>
     );
 }
 
