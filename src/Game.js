@@ -5,7 +5,7 @@ import Spielbrett from "./Spielbrett";
 
 function Game() {
     const [history, setHistory] = React.useState([Array(9).fill(null)]); // Damit wir die Spielzüge speichern können
-    const xIstDran = (history.length % 2) !== 0;
+    const currentTurnIsX = (history.length % 2) !== 0;
 
     function clickAction(squareIndex) {
         const currentHistory = history.slice(0, history.length + 1);
@@ -14,7 +14,7 @@ function Game() {
             return;
         }
         const squares = currentSquares.slice();
-        squares[squareIndex] = xIstDran ? 'X' : 'O';
+        squares[squareIndex] = currentTurnIsX ? 'X' : 'O';
         setHistory(currentHistory.concat([squares]));
     }
 
@@ -56,7 +56,7 @@ function Game() {
 
     const status = sieger !== null
         ? 'Sieger: ' + sieger
-        : 'Spieler ' + (xIstDran ? 'X' : 'O') + ' ist am Zug';
+        : 'Spieler ' + (currentTurnIsX ? 'X' : 'O') + ' ist am Zug';
 
     return (
         <div className="game">
