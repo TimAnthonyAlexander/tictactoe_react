@@ -4,7 +4,7 @@ import * as PropTypes from "prop-types";
 
 Spielbrett.propTypes = {
     onClick: PropTypes.func,
-    squares: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number))
+    squares: PropTypes.arrayOf(PropTypes.any)
 };
 
 function App() {
