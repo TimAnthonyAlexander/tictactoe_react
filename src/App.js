@@ -66,7 +66,7 @@ return (
         </div>
         <div className="game-info">
             <div>{status}</div>
-            <ol>{moves}</ol>
+            <ul className={"simplelist"}>{moves}</ul>
         </div>
     </div>
 );

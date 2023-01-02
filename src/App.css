@@ -48,3 +48,7 @@
   border: 1px solid #999;
   border-radius: 12px;
 }
+
+.simplelist {
+  list-style-type: none;
+}
