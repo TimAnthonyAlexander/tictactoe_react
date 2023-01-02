@@ -8,6 +8,8 @@ Spielbrett.propTypes = {
 };
 
 function App() {
+    document.title = "Tic Tac Toe";
+
     const [xIstDran, setCurrentTurnIsX] = React.useState(true); // Damit wir wissen, ob der nächste Spieler X oder O ist
     const [history, setHistory] = React.useState([Array(9).fill(null)]); // Damit wir die Spielzüge speichern können
     const [stepNumber, setStepNumber] = React.useState(0); // Damit wir wissen, welcher Spielzug gerade angezeigt werden soll
