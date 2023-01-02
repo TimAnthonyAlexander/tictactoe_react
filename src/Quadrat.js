@@ -2,6 +2,11 @@ import React from "react";
 import './Quadrat.css';
 import * as PropTypes from "prop-types";
 
+Quadrat.propTypes = {
+    onClick: PropTypes.func,
+    value: PropTypes.any
+};
+
 function Quadrat(props) {
     return (
         <button className="square" onClick={props.onClick}>
@@ -9,9 +14,5 @@ function Quadrat(props) {
         </button>
     );
 }
-Quadrat.propTypes = {
-    onClick: PropTypes.func,
-    value: PropTypes.any
-};
 
 export default Quadrat;
