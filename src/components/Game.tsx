@@ -21,7 +21,7 @@ const Game = (): ReactElement => {
             const squares = currentSquares.slice();
             squares[squareIndex] = currentTurnIsX ? 'X' : 'O';
             setHistory(currentHistory.concat([squares]));
-        }, [history, setHistory, calculateWinner, currentTurnIsX]);
+        }, [history, setHistory, currentTurnIsX]);
 
     const jumpTo = useCallback(
         (step: number) => setHistory(history.slice(0, step + 1)),
