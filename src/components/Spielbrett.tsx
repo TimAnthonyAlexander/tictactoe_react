@@ -1,5 +1,6 @@
 import Quadrat from "./Quadrat";
 import * as React from "react";
+import './Spielbrett.css';
 import { ReactElement } from "react";
 
 interface Props {
