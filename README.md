@@ -1,7 +1,7 @@
 # A simple react app
 ## TicTacToe
 
-This is what I wrote in order to learn basic react.
+This is what I wrote in order to learn basic react and typescript.
 (It's in German)
 
 # Install
