@@ -14,15 +14,14 @@ function App() {
     const [history, setHistory] = React.useState([Array(9).fill(null)]); // Damit wir die Spielzüge speichern können
     const [stepNumber, setStepNumber] = React.useState(0); // Damit wir wissen, welcher Spielzug gerade angezeigt werden soll
 
-
-    function clickAction(i) {
+    function clickAction(squareIndex) {
         const currentHistory = history.slice(0, stepNumber + 1);
         const currentSquares = currentHistory[currentHistory.length - 1];
-        const squares = currentSquares.slice();
-        if (calculateSieger(squares) || squares[i]) {
+        if (calculateSieger(currentSquares) !== null || currentSquares[squareIndex] !== null) {
             return;
         }
-        squares[i] = xIstDran ? 'X' : 'O';
+        const squares = currentSquares.slice();
+        squares[squareIndex] = xIstDran ? 'X' : 'O';
         setHistory(currentHistory.concat([squares]));
         setStepNumber(currentHistory.length);
         setCurrentTurnIsX(!xIstDran);
@@ -48,15 +47,9 @@ function App() {
         );
     });
 
-    let status;
-
-
-
-    if (sieger) {
-        status = 'Sieger: ' + sieger;
-    } else {
-        status = 'Spieler ' + (xIstDran ? 'X' : 'O') + ' ist am Zug';
-    }
+    const status = sieger
+        ? 'Sieger: ' + sieger
+        : 'Spieler ' + (xIstDran ? 'X' : 'O') + ' ist am Zug';
 
 return (
     <div className="game">
@@ -84,10 +77,10 @@ Quadrat.propTypes = {
 
 
 function Spielbrett(props) {
-    function renderQuadrat(i) {
+    function renderQuadrat(squareIndex) {
         return <Quadrat
-            value={props.squares[i]}
-            onClick={() => props.onClick(i)}
+            value={props.squares[squareIndex]}
+            onClick={() => props.onClick(squareIndex)}
         />;
     }
 
