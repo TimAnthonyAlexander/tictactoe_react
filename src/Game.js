@@ -4,8 +4,6 @@ import Spielbrett from "./Spielbrett";
 
 
 function Game() {
-    document.title = "Tic Tac Toe";
-
     const [history, setHistory] = React.useState([Array(9).fill(null)]); // Damit wir die Spielzüge speichern können
     const xIstDran = (history.length % 2) !== 0;
 
