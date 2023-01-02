@@ -8,7 +8,7 @@ const Game = (): ReactElement => {
     const [history, setHistory] = React.useState([Array(9).fill(null)]); // Damit wir die Spielzüge speichern können
     const currentTurnIsX = (history.length % 2) !== 0;
 
-    const calculateSieger = useCallback(
+    const calculateWinner = useCallback(
         (squares: Array<string | null>): string | null => {
             const lines = [
                 [0, 1, 2],
@@ -44,13 +44,13 @@ const Game = (): ReactElement => {
 
             const currentHistory = history.slice(0, history.length + 1);
             const currentSquares = currentHistory[currentHistory.length - 1];
-            if (calculateSieger(currentSquares) !== null || currentSquares[squareIndex] !== null) {
+            if (calculateWinner(currentSquares) !== null || currentSquares[squareIndex] !== null) {
                 return;
             }
             const squares = currentSquares.slice();
             squares[squareIndex] = currentTurnIsX ? 'X' : 'O';
             setHistory(currentHistory.concat([squares]));
-        }, [history, setHistory, calculateSieger, currentTurnIsX]);
+        }, [history, setHistory, calculateWinner, currentTurnIsX]);
 
     const jumpTo = useCallback(
         (step: number) => setHistory(history.slice(0, step + 1)),
@@ -58,7 +58,7 @@ const Game = (): ReactElement => {
     );
 
     const currentQuadrate = history[history.length - 1];
-    const sieger = calculateSieger(currentQuadrate);
+    const sieger = calculateWinner(currentQuadrate);
 
     const status = sieger !== null
         ? 'Sieger: ' + sieger
