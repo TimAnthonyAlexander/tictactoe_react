@@ -10,12 +10,11 @@ Spielbrett.propTypes = {
 function App() {
     document.title = "Tic Tac Toe";
 
-    const [xIstDran, setCurrentTurnIsX] = React.useState(true); // Damit wir wissen, ob der nächste Spieler X oder O ist
     const [history, setHistory] = React.useState([Array(9).fill(null)]); // Damit wir die Spielzüge speichern können
-    const [stepNumber, setStepNumber] = React.useState(0); // Damit wir wissen, welcher Spielzug gerade angezeigt werden soll
+    const xIstDran = (history.length % 2) !== 0;
 
     function clickAction(squareIndex) {
-        const currentHistory = history.slice(0, stepNumber + 1);
+        const currentHistory = history.slice(0, history.length + 1);
         const currentSquares = currentHistory[currentHistory.length - 1];
         if (calculateSieger(currentSquares) !== null || currentSquares[squareIndex] !== null) {
             return;
@@ -23,19 +22,13 @@ function App() {
         const squares = currentSquares.slice();
         squares[squareIndex] = xIstDran ? 'X' : 'O';
         setHistory(currentHistory.concat([squares]));
-        setStepNumber(currentHistory.length);
-        setCurrentTurnIsX(!xIstDran);
     }
 
     function jumpTo(step) {
-        setStepNumber(step);
-        setCurrentTurnIsX((step % 2) === 0);
-
         setHistory(history.slice(0, step + 1));
     }
 
-    const currentHistory = history.slice(0, stepNumber + 1);
-    const currentQuadrate = currentHistory[currentHistory.length - 1];
+    const currentQuadrate = history[history.length - 1];
     const sieger = calculateSieger(currentQuadrate);
 
     const moves = history.map((step, move) => {
@@ -120,7 +113,7 @@ function calculateSieger(squares) {
     for (let i = 0; i < lines.length; i++) {
         const [a, b, c] = lines[i];
         // Nur wenn drei aus einer Verbindung gleich sind, dann Sieg
-        if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+        if (squares[a] !== null && squares[a] === squares[b] && squares[a] === squares[c]) {
             return squares[a];
         }
     }
