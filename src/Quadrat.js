@@ -1,4 +1,5 @@
 import React from "react";
+import './Quadrat.css';
 import * as PropTypes from "prop-types";
 
 function Quadrat(props) {
