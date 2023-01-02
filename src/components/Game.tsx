@@ -1,8 +1,8 @@
 import './Game.css';
-import Spielbrett from "./Spielbrett";
 import * as React from "react";
 import { ReactElement, useCallback } from "react";
 import calculateWinner from "../helpers/calculateWinner";
+import Board from "./Board";
 
 
 const Game = (): ReactElement => {
@@ -39,7 +39,7 @@ const Game = (): ReactElement => {
         <div className="game">
             <h1 className={"centeredText"}>TicTacToe</h1>
             <div className="game-board">
-                <Spielbrett
+                <Board
                     squares={currentQuadrate}
                     onClick={(i) => clickAction(i)}
                 />

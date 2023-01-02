@@ -1,6 +1,6 @@
 import Quadrat from "./Quadrat";
 import * as React from "react";
-import './Spielbrett.css';
+import './Board.css';
 import { ReactElement } from "react";
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
     onClick: (i: number) => void;
 }
 
-const Spielbrett = ({squares, onClick}: Props): ReactElement => {
+const Board = ({squares, onClick}: Props): ReactElement => {
     return (
         <div>
             <div className="board-row">
@@ -30,4 +30,4 @@ const Spielbrett = ({squares, onClick}: Props): ReactElement => {
     );
 }
 
-export default Spielbrett;
+export default Board;
