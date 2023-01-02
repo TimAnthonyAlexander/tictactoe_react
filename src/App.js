@@ -56,16 +56,7 @@ function App() {
     const currentQuadrate = history[history.length - 1];
     const sieger = calculateSieger(currentQuadrate);
 
-    const moves = history.map((step, move) => {
-        const description = move ? 'Zug Nr. ' + move : 'Neues Spiel';
-        return (
-            <li key={move}>
-                <button onClick={() => jumpTo(move)} className={"gotobutton"}>{description}</button>
-            </li>
-        );
-    });
-
-    const status = sieger
+    const status = sieger !== null
         ? 'Sieger: ' + sieger
         : 'Spieler ' + (xIstDran ? 'X' : 'O') + ' ist am Zug';
 
@@ -80,7 +71,13 @@ function App() {
             </div>
             <div className="game-info">
                 <div>{status}</div>
-                <ul className={"simplelist"}>{moves}</ul>
+                <ul className={"simplelist"}>
+                    {history.map((step, move) => (
+                        <li key={move}>
+                            <button onClick={() => jumpTo(move)} className={"gotobutton"}>{move ? 'Zug Nr. ' + move : 'Neues Spiel'}</button>
+                        </li>
+                    ))}
+                </ul>
             </div>
         </div>
     );
