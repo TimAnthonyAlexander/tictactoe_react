@@ -41,14 +41,24 @@
 
 .game-info {
   margin-left: 20px;
+  margin-right: 20px;
+  text-align: center;
 }
 
 .gotobutton {
-  margin-left: 20px;
   border: 1px solid #999;
   border-radius: 12px;
 }
 
 .simplelist {
   list-style-type: none;
+  padding: 0;
+}
+
+.centeredText {
+  text-align: center;
+}
+
+.game-board {
+  margin-bottom: 20px;
 }

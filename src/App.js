@@ -60,6 +60,7 @@ function App() {
 
 return (
     <div className="game">
+        <h1 className={"centeredText"}>TicTacToe</h1>
         <div className="game-board">
             <Spielbrett
                 squares={currentQuadrate}
