@@ -39,7 +39,7 @@ function Game() {
         }
 
         // Check if all fields are filled = draw
-        if (squares.every((square) => square !== null)) {
+        if (squares.every(square => square !== null)) {
             return 'unentschieden';
         }
 
