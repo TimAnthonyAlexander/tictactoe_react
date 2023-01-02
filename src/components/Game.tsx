@@ -6,7 +6,7 @@ import calculateWinner from "../helpers/calculateWinner";
 
 
 const Game = (): ReactElement => {
-    const [history, setHistory] = React.useState([Array(9).fill(null)]); // Damit wir die Spielzüge speichern können
+    const [history, setHistory] = React.useState<Array<Array<string | null>>>([Array(9).fill(null)]); // Damit wir die Spielzüge speichern können
     const currentTurnIsX = (history.length % 2) !== 0;
 
 
