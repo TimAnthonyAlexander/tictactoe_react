@@ -1,5 +1,4 @@
 import { makeAutoObservable } from "mobx";
-import { observer } from "mobx-react";
 
 // A gamestore that saves history array
 class GameStore {

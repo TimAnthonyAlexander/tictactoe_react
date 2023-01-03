@@ -3,7 +3,6 @@ import * as React from "react";
 import './Board.css';
 import { ReactElement } from "react";
 import GameStore from "./GameStore";
-import { observer } from "mobx-react";
 
 interface Props {
     onClick: (i: number) => void;
