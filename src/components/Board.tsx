@@ -2,15 +2,18 @@ import Quadrat from "./Quadrat";
 import * as React from "react";
 import './Board.css';
 import { ReactElement } from "react";
+import GameStore from "./GameStore";
+import { observer } from "mobx-react";
 
 interface Props {
-    squares: Array<string | null>;
     onClick: (i: number) => void;
+    gamestate: GameStore
 }
 
-const Board = ({squares, onClick}: Props): ReactElement => {
-    return (
-        <div>
+const Board = ({onClick, gamestate}: Props): ReactElement => {
+
+        const squares = gamestate.history[gamestate.history.length - 1];
+        return <div>
             <div className="board-row">
                 <Quadrat value={squares[0]} onClick={() => onClick(0)}/>
                 <Quadrat value={squares[1]} onClick={() => onClick(1)}/>
@@ -26,8 +29,7 @@ const Board = ({squares, onClick}: Props): ReactElement => {
                 <Quadrat value={squares[7]} onClick={() => onClick(7)}/>
                 <Quadrat value={squares[8]} onClick={() => onClick(8)}/>
             </div>
-        </div>
-    );
+        </div>;
 }
 
 export default Board;
