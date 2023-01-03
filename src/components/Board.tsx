@@ -6,12 +6,12 @@ import GameStore from "./GameStore";
 
 interface Props {
     onClick: (i: number) => void;
-    gamestate: GameStore
+    gamestore: GameStore
 }
 
-const Board = ({onClick, gamestate}: Props): ReactElement => {
+const Board = ({onClick, gamestore}: Props): ReactElement => {
 
-        const squares = gamestate.history[gamestate.history.length - 1];
+        const squares = gamestore.history[gamestore.history.length - 1];
         return <div>
             <div className="board-row">
                 <Quadrat value={squares[0]} onClick={() => onClick(0)}/>

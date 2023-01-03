@@ -29,8 +29,8 @@ const Game = (): ReactElement => {
         [gamestore, gamestore.setHistory]
     );
 
-    const MyView = observer(( { gamestate } : {gamestate: GameStore}) => {
-        const currentTurnIsX = gamestate.history.length % 2 !== 0;
+    const MyView = observer(( { gamestore } : {gamestore: GameStore}) => {
+        const currentTurnIsX = gamestore.history.length % 2 !== 0;
         const currentQuadrate = gamestore.history[gamestore.history.length - 1];
         const sieger = calculateWinner(currentQuadrate);
 
@@ -43,7 +43,7 @@ const Game = (): ReactElement => {
                 <div className="game-board">
                     <Board
                         onClick={(i) => clickAction(i, currentTurnIsX)}
-                        gamestate={gamestore}
+                        gamestore={gamestore}
                     />
                 </div>
                 <div className="game-info">
@@ -62,7 +62,7 @@ const Game = (): ReactElement => {
 
     return (
         <div>
-            <MyView gamestate={gamestore}/>
+            <MyView gamestore={gamestore}/>
         </div>
     );
 }
