@@ -6,12 +6,9 @@ import Board from "./Board";
 import GameStore from "./GameStore";
 import { observer } from "mobx-react";
 
+let gamestore = new GameStore();
 
 const Game = (): ReactElement => {
-    //const [history, setHistory] = React.useState<Array<Array<string | null>>>([Array(9).fill(null)]); // Damit wir die Spielzüge speichern können
-    // Instead of using React.useState, use mobx for history
-    let gamestore = new GameStore();
-
     const clickAction = useCallback(
         (squareIndex: number, currentTurnIsX: boolean): void => {
             const currentSquares = gamestore.history[gamestore.history.length - 1];
@@ -22,11 +19,11 @@ const Game = (): ReactElement => {
             const squares = currentSquares.slice();
             squares[squareIndex] = currentTurnIsX ? 'X' : 'O';
             gamestore.setHistory(currentHistory.concat([squares]));
-        }, [gamestore, gamestore.setHistory]);
+        }, []);
 
     const jumpTo = useCallback(
         (step: number) => gamestore.setHistory(gamestore.history.slice(0, step + 1)),
-        [gamestore]
+        []
     );
 
     const MyView = observer(( { gamestore } : {gamestore: GameStore}) => {
