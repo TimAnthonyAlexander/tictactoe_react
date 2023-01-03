@@ -26,7 +26,7 @@ const Game = (): ReactElement => {
 
     const jumpTo = useCallback(
         (step: number) => gamestore.setHistory(gamestore.history.slice(0, step + 1)),
-        [gamestore, gamestore.setHistory]
+        [gamestore]
     );
 
     const MyView = observer(( { gamestore } : {gamestore: GameStore}) => {
